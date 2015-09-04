@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Fortuna - Probability for 40k</title>
+    <meta name="description" content="Fortuna - Probability for 40k">
+    <meta name="author" content="Patrick Rauland">
+
+    <link rel="stylesheet" href="demo.css">
+
+</head>
+<body>
+    <h1>Fortuna</h1>
+    <p>Select some numbers and hit the Go button</p>
+    <fieldset>
+        <p>
+            <label for="toHit">To Hit: </label>
+            <input type="number" id="toHit" min="1" max="7" />
+        </p>
+        <p>
+            <label for="toWound">To Wound: </label>
+            <input type="number" id="toWound" min="1" max="7" />
+        </p>
+        <p>
+            <label for="Save">Save: </label>
+            <input type="number" id="save" min="1" max="7" />
+        </p>
+    </fieldset>
+
+    <button onclick="myFunction()">Go!</button>
+    <div id="resultWrapper">
+        <p>Average wounds: <span id="result"></span></p>
+    </div>
+
+    <script>
+        function myFunction(){
+            // get values
+            var toHit   = document.getElementById('toHit').value;
+            var toWound = document.getElementById('toWound').value;
+            var save    = document.getElementById('save').value;
+
+            // send values through Fortuna probability calculator
+            var result = Fortuna.init( { toHit: toHit, toWound: toWound, save: save } );
+
+            // display result
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+    <script src="../fortuna.js"></script>
+</body>
+</html>
